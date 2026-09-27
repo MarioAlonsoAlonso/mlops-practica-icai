@@ -3,10 +3,13 @@ from sklearn import datasets
 from sklearn.model_selection import train_test_split 
 from sklearn.ensemble import RandomForestClassifier 
 from sklearn.metrics import accuracy_score 
-import joblib 
+import joblib
+import dagshub
 import mlflow 
-import mlflow.sklearn 
- 
+import mlflow.sklearn
+
+dagshub.init(repo_owner='marioalonsoalonsoch10', repo_name='mlops-practica-icai', mlflow=True)
+
 # Cargar el conjunto de datos 
 iris = datasets.load_iris() 
 X = iris.data 
