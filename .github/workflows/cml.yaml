@@ -36,8 +36,8 @@ jobs:
                 # Las credenciales de Dagshub son necesarias para acceder al
                 #almacenamiento remoto
             run: |
-                dvc remote modify origin --local access_key_id $DAGSHUB_API_KEY
-                dvc remote modify origin --local secret_access_key $DAGSHUB_API_KEY
+                dvc remote modify origin --local user ${{ secrets.DAGSHUB_USER }}
+                dvc remote modify origin --local password ${{ secrets.DAGSHUB_API_KEY }}
                 dvc pull -r origin
           - name: Install dependencies
             run: |
