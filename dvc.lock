@@ -1,0 +1,43 @@
+schema: '2.0'
+stages:
+  prepare:
+    cmd: echo "Verificando que los datos existen..."
+    deps:
+    - path: data/iris_dataset.csv
+      hash: md5
+      md5: dd9c71f51d70f9898d3f0fe2e136c47a
+      size: 2795
+  train:
+    cmd: python train.py --n_estimators 150
+    deps:
+    - path: data/iris_dataset.csv
+      hash: md5
+      md5: dd9c71f51d70f9898d3f0fe2e136c47a
+      size: 2795
+    - path: requirements.txt
+      hash: md5
+      md5: b3957030eb9425a3682fb8222639531e
+      size: 108
+    - path: train.py
+      hash: md5
+      md5: d4999c4d1a8df09f6405362e57a6e9ce
+      size: 3001
+    params:
+      params.yaml:
+        train.n_estimators: 150
+    outs:
+    - path: confusion_matrix.png
+      hash: md5
+      md5: b62a53cfadd7c27f3564a2ea2d4f0525
+      size: 19436
+      isexec: true
+    - path: mlflow_metrics.json
+      hash: md5
+      md5: c23a4b845cfcb729bc77225aaa6b5134
+      size: 32
+      isexec: true
+    - path: model.pkl
+      hash: md5
+      md5: 7276035b4df4f2ecf184c0a29d236419
+      size: 275377
+      isexec: true
